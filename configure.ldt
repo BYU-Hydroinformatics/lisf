@@ -1,0 +1,29 @@
+FC              = /usr/bin/mpif90
+FC77            = /usr/bin/mpif90
+LD              = /usr/bin/mpif90
+CC              = /usr/bin/mpicc
+AR              = ar
+MOD_ESMF        = /sandbox/esmf/install/mod
+LIB_ESMF        = /sandbox/esmf/install/lib
+INC_JPEG2000      = /usr/local/bin/jasper/include/
+LIB_JPEG2000      = /usr/local/bin/jasper/lib64/
+INC_ECCODES     = /usr/local/include/
+LIB_ECCODES     = /usr/local/lib/
+INC_NETCDF      = /sandbox/netcdf-c/4.7.3/install/include/
+LIB_NETCDF      = /sandbox/netcdf-c/4.7.3/install/lib/
+INC_HDF4        = /usr/local/include/
+LIB_HDF4        = /usr/local/lib/
+INC_HDF5        = 
+LIB_HDF5        = 
+INC_HDFEOS      = /usr/local/include/
+LIB_HDFEOS      = /usr/local/lib/
+INC_FORTRANGIS1 = 
+INC_FORTRANGIS2 = 
+LIB_FORTRANGIS  = 
+INC_LIBGEOTIFF  = 
+LIB_LIBGEOTIFF  = 
+LIB_GDAL        = 
+CFLAGS          = -c -DGFORTRAN 
+FFLAGS77        = -c -pass-exit-codes -O2   -DSPMD  -fconvert=big-endian -DGFORTRAN -I$(MOD_ESMF)  -I$(INC_ECCODES) -I$(INC_NETCDF)  -I$(INC_HDFEOS)  -I$(INC_HDF4) 
+FFLAGS          =  -c -pass-exit-codes -ffree-line-length-0 -O2   -DSPMD  -fconvert=big-endian -DGFORTRAN -I$(MOD_ESMF)  -I$(INC_ECCODES) -I$(INC_NETCDF)  -I$(INC_HDFEOS)  -I$(INC_HDF4) 
+LDFLAGS         =  -L$(LIB_ESMF) -lesmf -lstdc++ -lz  -lmpi -L$(LIB_ECCODES) -leccodes_f90 -leccodes -L$(LIB_JPEG2000) -ljasper -L$(LIB_NETCDF) -lnetcdff -lnetcdf -L$(LIB_HDFEOS) -lhdfeos -lGctp -L$(LIB_HDF4) -lmfhdf -ldf -ljpeg -lz 

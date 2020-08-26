@@ -1,0 +1,80 @@
+tar -xzf  eccodes.tar.gz
+> mkdir build ; cd build
+ 
+> cmake -DCMAKE_INSTALL_PREFIX=/path/to/where/you/install/eccodes ../eccodes-x.y.z-Source
+...
+
+
+cmake -H/libs/eccodes-2.18.0-Source -B/libs/eccodes-build
+> make
+> ctest
+> make install
+
+
+CC=mpicc && ./configure --enable-parallel --enable-fortran --prefix=/sandbox/hdf5/1.10.6/install
+/bin/sh -c CC=mpicc && ./configure --enable-parallel --prefix=${BB_HDF_PREFIX}
+
+
+ ENV BB_HDF_PREFIX=/sandbox/hdf5/1.10.6/install
+
+mkdir hdf4
+cd hdf4
+curl -L https://support.hdfgroup.org/ftp/HDF/releases/HDF4.2.15/src/hdf-4.2.15.tar.gz --output hdf4.tar.gz
+
+curl -L https://github.com/NASA-LIS/LISF/archive/v7.3.0-rc8-557WW.tar.gz --output lisf.tar.gz
+
+tar -xzf  lisf.tar.gz
+
+
+export FC=mpif90
+
+
+export LIS_ARCH=linux_gfortran
+export LIS_FC=/usr/bin/mpif90
+export LIS_CC=/usr/bin/mpicc
+export LIS_MODESMF=/sandbox/esmf/install/mod
+export LIS_LIBESMF=/sandbox/esmf/install/lib
+export LIS_JASPER=/usr/local/bin/jasper
+export LIS_ECCODES=/usr/local
+export LIS_NETCDF=/sandbox/netcdf-c/4.7.3/install
+export LIS_HDF5=/sandbox/hdf5/1.10.6/install
+export LIS_HDF4=/usr/local
+export LIS_HDFEOS=/usr/local
+export LD_LIBRARY_PATH=$LIS_HDF5/lib:$LIS_HDF4/lib:$LIS_LIBESMF:$LIS_NETCDF/lib:${LIS_ECCODES}/lib:$LD_LIBRARY_PATH
+
+export LIS_ARCH=linux_gfortran
+export LIS_FC=/usr/bin/mpif90
+export LIS_CC=/usr/bin/mpicc
+export LIS_MODESMF=/sandbox/esmf/install/mod
+export LIS_LIBESMF=/sandbox/esmf/install/lib
+export LIS_JASPER=/usr/local/bin/jasper
+export LIS_ECCODES=/usr/local
+export LIS_NETCDF=/sandbox/netcdf-c/4.7.3/install
+export LIS_HDF5=/sandbox/hdf5/1.10.6/install
+export LD_LIBRARY_PATH=$LIS_HDF5/lib:$LIS_LIBESMF:$LIS_NETCDF/lib:${LIS_ECCODES}/lib:$LD_LIBRARY_PATH
+
+export LDT_ARCH=linux_gfortran
+export LDT_FC=/usr/bin/mpif90
+export LDT_CC=/usr/bin/mpicc
+export LDT_MODESMF=/sandbox/esmf/install/mod
+export LDT_LIBESMF=/sandbox/esmf/install/lib
+export LDT_JASPER=/usr/local/bin/jasper
+export LDT_ECCODES=/usr/local
+export LDT_NETCDF=/sandbox/netcdf-c/4.7.3/install
+export LDT_HDF5=/sandbox/hdf5/1.10.6/install
+export LDT_HDF4=/usr/local
+export LDT_HDFEOS=/usr/local
+export LD_LIBRARY_PATH=$LDT_HDF4/lib:$LDT_LIBESMF:$LDT_NETCDF/lib:$LDT_ECCODES/lib
+
+cd ~
+touch .netrc
+echo "machine urs.earthdata.nasa.gov login tethysgldas password KKP4E2sjTfQGsMX" >> .netrc
+chmod 0600 .netrc
+touch .urs_cookies
+
+curl -L  https://support.hdfgroup.org/ftp/HDF/HDF_Current/src/CMake-hdf-4.2.13.tar.gz --output hdf4.tar.gz &&\
+	mkdir hdf4-build &&\
+	tar -xf hdf4.tar.gz &&\
+
+
+ ./configure --enable-fortran --disable-netcdf --with-zlib=/path_to_ZLIB_install_directory --with-jpeg=/path_to_JPEG_install_directory --prefix=/sandbox/hdf4
