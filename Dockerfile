@@ -117,7 +117,7 @@ RUN cd /libs/LISF-7.3.0-rc8-557WW/lis &&\
 
 
 # Copy the configuration files for LVT
-COPY configure.lis /libs/LISF-7.3.0-rc8-557WW/lvt/make
+COPY configure.lvt /libs/LISF-7.3.0-rc8-557WW/lvt/make
 COPY LVT_NetCDF_inc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
 COPY LVT_misc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
 
@@ -135,10 +135,10 @@ ENV LVT_ARCH=linux_gfortran \
 	LVT_HDF4=/usr/local \
 	LVT_HDFEOS=/usr/local
 
-# #Compile LIS
-# RUN cd /libs/LISF-7.3.0-rc8-557WW/lvt &&\
-# 	./compile &&\
-# 	cp ./LVT /home/apps/
+#Compile LVT
+RUN cd /libs/LISF-7.3.0-rc8-557WW/lvt &&\
+	./compile &&\
+	cp ./LVT /home/apps/
 
 # Only for dev
 ENTRYPOINT ["tail", "-f", "/dev/null"]
