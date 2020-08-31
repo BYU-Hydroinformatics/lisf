@@ -1,7 +1,7 @@
 on: push
 
 jobs:
-  publish:
+  build-push-docker:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
