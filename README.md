@@ -6,10 +6,11 @@ This image presents an easier way to run [LISF](https://github.com/NASA-LIS/LISF
 
 ## Build Details
 
-Currently LDT and LIS are the tools that compile and have been tested against test cases. They are compiled with the following dependencies:
+Currently LDT,LIS,LVT have been compiled and tested against test cases as on NASA LISF's website. They are compiled with the following dependencies:
 
 -   ESMF - We use a base docker image from [DockerHub](https://hub.docker.com/r/bekozi/esmf)
 -   HDF4
+-         HDF5 (Currently only for LVT. Support can be expanded to other tools as well)
 -   HDFEOS 2
 -   Jasper v2.0.19
 -   ECCodes v2.18.0
@@ -59,7 +60,8 @@ Bottom temperature map:          /home/files/testcase1_ldt_parms/INPUT/LS_PARAME
 
 -   Move to the directory containing the binaries: `cd /home/apps`
 -   To run LDT: `./LDT <path to the config file>` which for `Test Case 1` would be `./LDT /home/files/testcase1_ldt_parms/ldt.config.noah36_params`
--   To Run LIS: `./LIS <path to the config file>` which for `Test Case 2` would be `./LIS /home/files/testcase2_lis_ol/lis.config_noah36_ol`
+-   To run LIS: `./LIS -f <path to the config file>` which for `Test Case 2` would be `./LIS -f /home/files/testcase2_lis_ol/lis.config_noah36_ol`
+-   To run LVT: `./LVT <path to the config file>`
 
 ### Notes
 
@@ -68,5 +70,4 @@ Bottom temperature map:          /home/files/testcase1_ldt_parms/INPUT/LS_PARAME
 
 ## Future Improvements
 
--   Get LVT to compile
 -   Reduce Image Size

@@ -13,8 +13,8 @@ INC_NETCDF      = /sandbox/netcdf-c/4.7.3/install/include/
 LIB_NETCDF      = /sandbox/netcdf-c/4.7.3/install/lib/
 INC_HDF4        = /usr/local/include/
 LIB_HDF4        = /usr/local/lib/
-INC_HDF5        = 
-LIB_HDF5        = 
+INC_HDF5        = /sandbox/hdf5/1.10.6/install/include/
+LIB_HDF5        = /sandbox/hdf5/1.10.6/install/lib/
 INC_HDFEOS      = /usr/local/include/
 LIB_HDFEOS      = /usr/local/lib/
 INC_FORTRANGIS1 = 
@@ -22,6 +22,6 @@ INC_FORTRANGIS2 =
 LIB_FORTRANGIS  = 
 LIB_GDAL        = 
 CFLAGS          = -c  -DGFORTRAN 
-FFLAGS77        = -c -pass-exit-codes -O0  -fbacktrace  -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DHIDE_MPI -I$(MOD_ESMF)  -I$(INC_ECCODES) -I$(INC_NETCDF)  -I$(INC_HDFEOS)  -I$(INC_HDF4) 
-FFLAGS          =  -c -pass-exit-codes -ffree-line-length-0 -O0  -fbacktrace  -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DHIDE_MPI -I$(MOD_ESMF)  -I$(INC_ECCODES) -I$(INC_NETCDF)  -I$(INC_HDFEOS)  -I$(INC_HDF4) 
-LDFLAGS         =  -L$(LIB_ESMF) -lesmf -lstdc++  -L$(LIB_ECCODES) -leccodes_f90 -leccodes -L$(LIB_JPEG2000) -ljasper -L$(LIB_NETCDF) -lnetcdff -lnetcdf -L$(LIB_HDFEOS) -lhdfeos -lGctp -L$(LIB_HDF4) -lmfhdf -ldf -ljpeg -lz 
+FFLAGS77        = -c -pass-exit-codes -O0  -fbacktrace  -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DHIDE_MPI -I$(MOD_ESMF)  -I$(INC_ECCODES) -I$(INC_NETCDF)  -I$(INC_HDFEOS)  -I$(INC_HDF4)  -I$(INC_HDF5) 
+FFLAGS          =  -c -pass-exit-codes -ffree-line-length-0 -O0  -fbacktrace  -fconvert=big-endian -DHIDE_SHR_MSG -DNO_SHR_VMATH -DGFORTRAN -DHIDE_MPI -I$(MOD_ESMF)  -I$(INC_ECCODES) -I$(INC_NETCDF)  -I$(INC_HDFEOS)  -I$(INC_HDF4)  -I$(INC_HDF5) 
+LDFLAGS         =  -L$(LIB_ESMF) -lesmf -lstdc++  -L$(LIB_ECCODES) -leccodes_f90 -leccodes -L$(LIB_JPEG2000) -ljasper -L$(LIB_NETCDF) -lnetcdff -lnetcdf -L$(LIB_HDFEOS) -lhdfeos -lGctp -L$(LIB_HDF4) -lmfhdf -ldf -ljpeg -lz  -L$(LIB_HDF5) -lhdf5_fortran -lhdf5_hl -lhdf5 -ldl

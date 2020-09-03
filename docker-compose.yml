@@ -3,7 +3,7 @@ version: "3.8"
 services:
   lis:
     container_name: lis
-    # build: ./
+    build: ./
     image: rfun11/lisf:latest
     volumes:
       - type: bind

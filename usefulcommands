@@ -12,7 +12,7 @@ cmake -H/libs/eccodes-2.18.0-Source -B/libs/eccodes-build
 
 
 CC=mpicc && ./configure --enable-parallel --enable-fortran --prefix=/sandbox/hdf5/1.10.6/install
-/bin/sh -c CC=mpicc && ./configure --enable-parallel --prefix=${BB_HDF_PREFIX}
+CC=mpicc && ./configure --enable-parallel --prefix=${BB_HDF_PREFIX}
 
 
  ENV BB_HDF_PREFIX=/sandbox/hdf5/1.10.6/install

@@ -115,30 +115,35 @@ RUN cd /libs/LISF-7.3.0-rc8-557WW/lis &&\
 	cp ./LIS /home/apps/
 
 
+# Recompile HDF5 with fortran bindings
 
-# # Copy the configuration files for LVT
-# COPY configure.lvt /libs/LISF-7.3.0-rc8-557WW/lvt/make
-# COPY LVT_NetCDF_inc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
-# COPY LVT_misc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
+RUN cd /sandbox/hdf5/1.10.6/src/hdf5-1.10.6 &&\
+	CC=mpicc && ./configure --enable-parallel --enable-fortran --prefix=/sandbox/hdf5/1.10.6/install &&\
+	make && make install
 
-# # Set ENV variabled for LIS Install
 
-# ENV LVT_ARCH=linux_gfortran \
-# 	LVT_FC=/usr/bin/mpif90 \
-# 	LVT_CC=/usr/bin/mpicc \
-# 	LVT_MODESMF=/sandbox/esmf/install/mod \
-# 	LVT_LIBESMF=/sandbox/esmf/install/lib \
-# 	LVT_JASPER=/usr/local/bin/jasper \
-# 	LVT_ECCODES=/usr/local \
-# 	LVT_NETCDF=/sandbox/netcdf-c/4.7.3/install \
-# 	LVT_HDF5=/sandbox/hdf5/1.10.6/install \
-# 	LVT_HDF4=/usr/local \
-# 	LVT_HDFEOS=/usr/local
+# Copy the configuration files for LVT
+COPY configure.lvt /libs/LISF-7.3.0-rc8-557WW/lvt/make
+COPY LVT_NetCDF_inc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
+COPY LVT_misc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
 
-# #Compile LVT
-# RUN cd /libs/LISF-7.3.0-rc8-557WW/lvt &&\
-# 	./compile &&\
-# 	cp ./LVT /home/apps/
+# Set ENV variabled for LIS Install
+ENV LVT_ARCH=linux_gfortran \
+	LVT_FC=/usr/bin/mpif90 \
+	LVT_CC=/usr/bin/mpicc \
+	LVT_MODESMF=/sandbox/esmf/install/mod \
+	LVT_LIBESMF=/sandbox/esmf/install/lib \
+	LVT_JASPER=/usr/local/bin/jasper \
+	LVT_ECCODES=/usr/local \
+	LVT_NETCDF=/sandbox/netcdf-c/4.7.3/install \
+	LVT_HDF5=/sandbox/hdf5/1.10.6/install \
+	LVT_HDF4=/usr/local \
+	LVT_HDFEOS=/usr/local
+
+#Compile LVT
+RUN cd /libs/LISF-7.3.0-rc8-557WW/lvt &&\
+	./compile &&\
+	cp ./LVT /home/apps/
 
 # Only for dev
 ENTRYPOINT ["tail", "-f", "/dev/null"]

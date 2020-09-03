@@ -2,7 +2,7 @@
 #define USE_GRIBAPI 
 #define USE_ECCODES 
 #define USE_HDF4 
-#undef USE_HDF5 
+#define USE_HDF5 
 #undef AFWA_GRIB_CONFIGS 
 #undef USE_MATLAB_SUPPORT 
 #undef USE_GDAL 
