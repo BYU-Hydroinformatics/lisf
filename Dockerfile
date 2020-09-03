@@ -123,9 +123,9 @@ RUN cd /sandbox/hdf5/1.10.6/src/hdf5-1.10.6 &&\
 
 
 # Copy the configuration files for LVT
-COPY configure.lvt /libs/LISF-7.3.0-rc8-557WW/lvt/make
-COPY LVT_NetCDF_inc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
-COPY LVT_misc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
+COPY ./build_configs/configure.lvt /libs/LISF-7.3.0-rc8-557WW/lvt/make
+COPY ./build_configs/LVT_NetCDF_inc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
+COPY ./build_configs/LVT_misc.h /libs/LISF-7.3.0-rc8-557WW/lvt/make
 
 # Set ENV variabled for LIS Install
 ENV LVT_ARCH=linux_gfortran \
