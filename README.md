@@ -10,7 +10,7 @@ Currently LDT,LIS,LVT have been compiled and tested against test cases as on NAS
 
 -   ESMF - We use a base docker image from [DockerHub](https://hub.docker.com/r/bekozi/esmf)
 -   HDF4
--         HDF5 (Currently only for LVT. Support can be expanded to other tools as well)
+-   HDF5 (Currently only for LVT. Support can be expanded to other tools as well)
 -   HDFEOS 2
 -   Jasper v2.0.19
 -   ECCodes v2.18.0
